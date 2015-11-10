@@ -54,9 +54,10 @@ class Weather(server.App):
 
     def getHTML(self, params):
         df = self.getData(params)
+        df.columns = ['lat','lon','value']
         x_range = Range1d()
         y_range = Range1d()
-        map_options = GMapOptions(lat=39.0, lng=-98.0, map_type="roadmap", zoom=4, styles="""
+        map_options = GMapOptions(lat=39.0, lng=-98.0, map_type="roadmap", zoom=5, styles="""
             [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},
             {"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},
             {"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},
@@ -78,7 +79,8 @@ class Weather(server.App):
             x_range=x_range, y_range=y_range,
             map_options=map_options,
             title="Historical Weather",
-            plot_width=800
+            plot_width=1350,
+            plot_height=800
         )
         weather_source = ColumnDataSource(
             data=dict(
@@ -87,7 +89,7 @@ class Weather(server.App):
                 fill=colors
             )
         )
-        weather_circle = Circle(x="lon", y="lat", size=4, fill_color="fill", line_color=None, fill_alpha=0.1)
+        weather_circle = Circle(x="lon", y="lat", size=6, fill_color="fill", line_color=None, fill_alpha=0.2)
         plot.add_glyph(weather_source, weather_circle)
         pan = PanTool()
         wheel_zoom = WheelZoomTool()
