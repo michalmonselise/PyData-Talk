@@ -1,0 +1,25 @@
+forecast-*
+10/
+*.zip
+*.pdf
+*.pptx
+*.csv
+*.exe
+*.png
+http%3a%2f%2fdownload.osgeo.org%2fosgeo4w%2f/
+python-forecast.io-master/
+*.docx
+tweepy_cold_bokeh_map.py
+.gitignore~
+10-high/
+10-low/
+auth.txt
+cold_map.py
+cold_scraper.py
+forecast_rain.py
+google_maps bokeh example.py
+hot_scraper.py
+important_status_attributes.txt
+rain_scraper.py
+sales_hist.py
+start.py
